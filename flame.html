@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <title>flames</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+        <style>
+            .bacground_body{
+                background-color: rgb(255, 131, 149);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .flamescolor{
+                color:rgb(96, 6, 6);
+                font-family: "Poetsen One", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size:150px;
+                margin:0px;
+            }
+            .enterside{
+                background-color: rgb(255, 131, 149);
+                position: relative;
+                width:530px;
+            }
+            .enter{
+                margin:0px;
+                position:absolute;
+                top:120;
+                right:130;
+                left:110;
+                height:400px;
+                border-style: solid;
+                border:none;
+                border-style: solid;
+                border-width:1px;
+                border-color: rgba(211, 211, 211, 0.122);
+                border-radius:10px;
+                background:rgba(255, 126, 145, 0.688);
+                backdrop-filter: saturate(18%) blur(10px);
+                opacity:0.6;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                z-index:1000;
+            }
+            .textside{
+                height: 30px;
+                width: 200px;
+                border-style: none;
+                border:none;
+                border-radius:4px;
+                padding: 10px;
+                margin-bottom:20px;
+                background-color: rgb(255, 131, 149);
+                display: block;
+                border-style: solid;
+                border-width:0.4px;
+                border-color:rgb(96, 6, 6);
+            }
+            .textside ::placeholder{
+                color:rgb(96, 6, 6);
+            }
+            
+            .botton{
+                display: block;
+                height: 30px;
+                width: 200px;
+                border-style: solid;
+                border-width:0.4px;
+                border-color:rgb(96, 6, 6);
+                margin-top:40px;
+                border-radius: 50px;
+                color:white;
+                background-color: rgb(96, 6, 6);
+            }
+            .imagesize{
+                width:115px;
+                height:115px;
+            }
+            .imagesize1{
+                width:80px;
+                height:80px;
+            }
+            .flexside{
+                position: relative;
+            }
+            .imageside{
+                position:absolute;
+                bottom:-400;
+                left:55;
+            }
+            .imageside1{
+                position:absolute;
+                bottom:-90;
+                right:70;
+            }
+        </style>
+    </head>
+
+    <body class="bacground_body">
+        
+        <div class="enterside">
+            <h1 class="flamescolor">FLAMES</h1>
+            <div class="enter">
+                <div class="flexside">
+                    <input type="text" class="textside" placeholder="YOUR NAME">
+                    <input type="text" class="textside" placeholder="PARTNER NAME">
+                    <button class="botton">ALRIGHT !</button>
+                    
+                </div>
+                
+            </div>
+            <div class="imageside">
+                <img class="imagesize"src="C:\Users\ELCOT\Downloads\heart.png">
+            </div>
+            <div class="imageside1">
+                <img class="imagesize1"src="C:\Users\ELCOT\Downloads\heart.png">
+            </div>
+        </div>
+        <script>
+            let a = "vijay";
+            let b = "meena";
+            let c = a.split('');
+            let d = b.split('');
+            console.log(c)
+
+            //this function used to get the not same string example in below
+            function delete_name(cm,dm){
+                let emp = []
+                for(let i=0;i<cm.length;i++){
+                    for(let j=0;j<dm.length;j++){
+                        if(cm[i]===dm[j]){
+                            i=i+1;
+                            j=-1;
+                        }
+                    }
+                    emp.push(cm[i])
+                }
+                return emp;
+            }
+            let m = delete_name(c,d);//vijay,meena = vijy
+            let x = delete_name(d,c);//meena,vijay = meen
+
+            let add = m+x;
+            let solo = add.split('');//v,i,j,y,m,e,e,n
+            let o = []
+            solo.forEach((element) => {
+                if(element !== ','){
+                    o.push(element);
+                }
+            });//v i j y m e e n => o
+            console.log(o.length);// 8
+            
+            let xy = ['f','l','a','m','e','s']
+
+            let ans = 0;
+            let flame = '';//flame answer
+            let th = [];
+            let non=0;
+
+            while (ans===0){
+                let yx = xy.slice();// f l a m e s
+
+                //this using for to fill ex: f l a m e s f l
+                for(let h=0;h<o.length;h++){
+                    if(non!==xy.length){
+                        th.push(xy[non]);
+                        non+=1;
+                    }else{
+                        non=0;
+                        th.push(xy[non]);
+                        non+=1;
+                    }  
+                }  
+
+                console.log(th)// f l a m e s f l
+
+                let q = th.length;// 8
+                console.log(q);
+
+                let u= th[q-1];// f l a m e s f l  => 8
+                console.log(th[q-1]);// l
+
+                let y =0;
+                // this use to get equal f l a m e s word => l
+                for(bb=0;bb<xy.length;bb++){
+                    if(th[q-1]===xy[bb]){
+                        y=bb+1;
+                    }  
+                }
+
+                console.log(y)// flames side => l
+                
+                //flames=> l rightside=> a m e s
+                let vv=[];
+                for(ss=y;ss<xy.length;ss++){
+                    vv.push(xy[ss])
+                }
+                console.log(vv);// a m e s
+
+                //flames => l leftside => f
+                let bc=[];
+                for(aa=y-2;aa>-1;aa--){
+                    bc.push(xy[aa]);
+                }
+                console.log(bc);//f
+
+                let rr = bc.reverse();// leftside reverse => f
+
+                console.log(rr);// f
+                console.log(vv);// a m e s
+                //this function use to push in rr array than get a m e s f
+                for(ee=0;ee<rr.length;ee++){
+                    vv.push(rr[ee]);
+                }
+                console.log(vv);// a m e s f
+
+                xy=vv;// this use to reassign the flames => to => a m e s f
+                //this function when flames array in length 1 go exit;
+                if(xy.length===1){
+                    ans=1;
+                    flame = vv;
+                } 
+                th = [];
+                non=0;
+            }
+            console.log(flame);
+            
+        </script>
+    </body>
+</html>
